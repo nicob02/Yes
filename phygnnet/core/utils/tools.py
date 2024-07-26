@@ -55,7 +55,7 @@ def modelTrainer(config):
 
             value_last = graph.x.detach().clone()
             boundary_value = config.bc(graph.pos, this_time)
-            graph.x[on_boundary] = boundary_value
+            graph.x[on_boundary] = boundary_value[on_boundary]
             predicted = model(graph)
             # hard boundary
             predicted[on_boundary] = boundary_value[on_boundary]
@@ -103,7 +103,7 @@ def modelTester(config):
         this_time = begin_time + delta_t * step
 
         boundary_value = config.bc(graph.pos, this_time)
-        graph.x[on_boundary] = boundary_value
+        graph.x[on_boundary] = boundary_value[on_boundary]
         predicted = model(graph)
         predicted[on_boundary] = boundary_value[on_boundary]
 
