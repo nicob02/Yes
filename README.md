@@ -1,14 +1,14 @@
-# PhyGNNet: Solving spatiotemporal PDEs with Physics-informed Graph Neural Network
+# Combining physics-informed graph neural network and finite difference for solving forward and inverse spatiotemporal PDEs
 
-This repo is the official implementation of ["PhyGNNet: Solving spatiotemporal PDEs with Physics-informed Graph Neural Network"](https://doi.org/10.1145/3590003.3590029) by Longxiang Jiang, Liyuan Wang, Xinkun Chu, Yonghao Xiao, and Hao Zhang $^{*}$.
+This repo is the official implementation of ["Combining physics-informed graph neural network and finite difference for solving forward and inverse spatiotemporal PDEs"](https://doi.org/10.1145/3590003.3590029) by Hao Zhang, Longxiang Jiang, Xinkun Chu, Yong Wen, Luxiong Li, Yonghao Xiao, and Liyuan Wang$^{*}$.
 
 ## Abstract
-Partial differential equations (PDEs) are a common means of describing physical processes. Solving PDEs can obtain simulated results of physical evolution. Currently, the mainstream neural network method is to minimize the loss of PDEs thus constraining neural networks to fit the solution mappings. By the implementation of differentiation, the methods can be divided into PINN methods based on automatic differentiation and other methods based on discrete differentiation. PINN methods rely on automatic backpropagation, and the computation step is time-consuming, for iterative training, the complexity of the neural network and the number of collocation points are limited to a small condition, thus abating accuracy. The discrete differentiation is more efficient in computation, following the regular computational domain assumption. However, in practice, the assumption does not necessarily hold. In this paper, we propose a PhyGNNet method to solve PDEs based on graph neural network and discrete differentiation on irregular domain. Meanwhile, to verify the validity of the method, we solve Burgers equation and conduct a numerical comparison with PINN. The results show that the proposed method performs better both in fit ability and time extrapolation than PINN.
+The great success of Physics-Informed Neural Networks (PINN) in solving partial differential equations (PDEs) has significantly advanced our simulation and understanding of complex physical systems in science and engineering. However, many PINN-like methods are poorly scalable and are limited to in-sample scenarios. To address these challenges, this work proposes a novel discrete approach termed Physics-Informed Graph Neural Network (PIGNN) to solve forward and inverse nonlinear PDEs. In particular, our approach seamlessly integrates the strength of graph neural networks (GNN), physical equations and finite difference to approximate solutions of physical systems. Our approach is compared with the PINN baseline on three well-known nonlinear PDEs (heat, Burgers and FitzHugh-Nagumo). We demonstrate the excellent performance of the proposed method to work with irregular meshes, longer time steps, arbitrary spatial resolutions, varying initial conditions (ICs) and boundary conditions (BCs) by conducting extensive numerical experiments. Numerical results also illustrate the superiority of our approach in terms of accuracy, time extrapolability, generalizability and scalability. The main advantage of our approach is that models trained in small domains with simple settings have excellent fitting capabilities and can be directly applied to more complex situations in large domains.
 
 
 ## Example
 
-We provide example for solving burgers equation, just create a conda environment with python==3.8
+We provide example for solving heat, Burgers and FitzHugh-Nagumo equations, just create a conda environment with python==3.8
 ```
 conda create -n meshpde python==3.8 && conda activate meshpde
 ```
@@ -26,31 +26,7 @@ When train finished, to evaluate the trained model and visualize solution result
 ```
 python test.py
 ```
-and,the results images will be saved in the `images` folder.
+and,the results images will be saved in the `testImg_save_dir` folder.
 
-
-## Citation
-
-If you find this repository useful, please consider giving ⭐ or citing:
-
-```
-@inproceedings{phygnnet,
-author = {Jiang, Longxiang and Wang, Liyuan and Chu, Xinkun and Xiao, Yonghao and Zhang, Hao},
-title = {PhyGNNet: Solving Spatiotemporal PDEs with Physics-Informed Graph Neural Network},
-year = {2023},
-isbn = {9781450399449},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3590003.3590029},
-doi = {10.1145/3590003.3590029},
-pages = {143–147},
-numpages = {5},
-keywords = {Physics-informed neural networks, Partial differential equation, Graph neural networks, Surrogate modeling},
-location = {Shanghai, China},
-series = {CACML '23}
-}
-
-
-```
 
 
