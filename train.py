@@ -38,7 +38,7 @@ setattr(train_config, 'graph', graph)
 setattr(train_config, 'model', model)
 setattr(train_config, 'optimizer', optimizer)
 setattr(train_config, 'train_steps', 10)  #time step
-setattr(train_config, 'epchoes', 1000)
+setattr(train_config, 'epchoes', 50)
 setattr(train_config, 'NodeTypesRef', CircleMesh.node_type_ref)
 setattr(train_config, 'writer', writer)
 
