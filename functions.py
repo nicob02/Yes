@@ -61,5 +61,8 @@ class BurgesFunc():
                                                keepdim=True) - 1/self.R*lapu
         lossv = dvdt + (gradv*values_this).sum(dim=-1,
                                                keepdim=True) - 1/self.R*lapv
-
+        print("lossu")
+        print(lossu)
+        print("lossv")
+        print(lossv)
         return torch.cat([lossu, lossv], axis=1)
